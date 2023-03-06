@@ -1,12 +1,15 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
+import { Home } from './components/Home'
+import { DriverList } from './components/DriverList'
 
 const AppRoutes = [
   {
     index: true,
-    element: <Home />
+    element: <Home />,
   },
-];
+  {
+    path: '/drivers',
+    element: <DriverList />,
+  },
+]
 
-export default AppRoutes;
+export default AppRoutes

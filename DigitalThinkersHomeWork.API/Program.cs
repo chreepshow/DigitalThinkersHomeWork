@@ -1,6 +1,11 @@
+using DigitalThinkersHomeWork.Driver;
+using DigitalThinkersHomeWork.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDriverDbContextConfig(builder.Configuration);
+builder.Services.AddDriverConfig(builder.Configuration);
 
 builder.Services.AddControllersWithViews();
 
@@ -13,7 +18,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",

@@ -1,18 +1,15 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
+import styles from './home.module.css'
 
-export class Home extends Component {
-  componentDidMount() {
+export function Home() {
+  useEffect(() => {
     document.title = 'DT-HW Home'
-  }
+  }, [])
 
-  static displayName = Home.name
-
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <a href="/drivers">Let's see the drivers!</a>
-      </div>
-    )
-  }
+  return (
+    <section className={styles.container}>
+      <h1>Hello, world!</h1>
+      <a href="/drivers">Let's see the drivers!</a>
+    </section>
+  )
 }

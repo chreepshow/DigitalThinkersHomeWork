@@ -45,7 +45,7 @@ namespace DigitalThinkersHomeWork.Infrastructure
 
         private void ReadDrivers()
         {
-            string fileName = "../DigitalThinkersHomeWork.Infrastructure/data/seed/drivers.json";
+            string fileName = "./seed/drivers.json";
             string jsonString = File.ReadAllText(fileName);
             Drivers = JsonSerializer.Deserialize<List<DriverModel>>(jsonString, new JsonSerializerOptions
             {

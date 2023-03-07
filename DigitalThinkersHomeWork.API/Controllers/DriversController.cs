@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DigitalThinkersHomeWork.Driver;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalThinkersHomeWork.API.Controllers
 {
@@ -7,23 +8,19 @@ namespace DigitalThinkersHomeWork.API.Controllers
     public class DriversController : ControllerBase
     {
         private ILogger<DriversController> Logger { get; }
-        private static readonly string[] Drivers = new[]
-        {
-            "Driver1", "Driver2", "Driver3", "Driver4",
-        };
+        private IDriverService DriverService { get; }
 
-
-        public DriversController(ILogger<DriversController> logger)
+        public DriversController(ILogger<DriversController> logger, IDriverService driverService)
         {
             Logger = logger;
+            DriverService = driverService;
         }
 
-
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<DriverModel>> GetAllDrivers()
         {
-            Logger.LogInformation("Get method called.");
-            return Drivers.AsEnumerable();
+            Logger.LogInformation("Get all drivers endpoint called.");
+            return await DriverService.GetAllDrivers();
         }
     }
 }

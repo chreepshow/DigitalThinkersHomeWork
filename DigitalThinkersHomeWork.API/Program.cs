@@ -1,6 +1,5 @@
 using DigitalThinkersHomeWork.Driver;
 using DigitalThinkersHomeWork.Infrastructure;
-using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,3 +1,16 @@
-html, body, #root {
-    height: 100%;
-  }
+body, #root {
+    display: flex;
+    flex-direction: column;
+    min-height:100vh;
+}
+
+a {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    filter: brightness(0.5);
+}

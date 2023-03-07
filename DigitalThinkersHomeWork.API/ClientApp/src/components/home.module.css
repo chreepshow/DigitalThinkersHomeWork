@@ -1,3 +1,17 @@
 .container {
-    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.welcomeCard {
+    align-items: center;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 16px;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
 }

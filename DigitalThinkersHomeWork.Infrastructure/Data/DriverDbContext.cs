@@ -19,6 +19,7 @@ namespace DigitalThinkersHomeWork.Infrastructure
             Logger = logger;
             Logger.LogInformation("Initialise and seed database");
             ReadDrivers();
+            SetRandomPlacesToDrivers();
             Logger.LogInformation("Initialise and seed finished");
         }
 
@@ -44,6 +45,30 @@ namespace DigitalThinkersHomeWork.Infrastructure
             {
                 PropertyNameCaseInsensitive = true
             })!;
+
+            foreach (var driver in Drivers)
+            {
+                driver.ImageUrl = $"/images/{driver.Code.ToLower()}.png";
+            }
+        }
+
+        private void SetRandomPlacesToDrivers()
+        {
+            for (int i = 0; i < Drivers.Count; ++i)
+            {
+                places.Add(i + 1);
+            }
+
+            var random = new Random();
+            int driverIndex = 0;
+            while(places.Count > 0)
+            {
+                var placeIndex = random.Next(places.Count);
+                var currentPlace = places.ElementAt(placeIndex);
+
+                Drivers.ElementAt(driverIndex++).Place = currentPlace;
+                places.Remove(currentPlace);
+            }
         }
     }
 }

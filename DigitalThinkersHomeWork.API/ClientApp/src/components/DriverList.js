@@ -26,6 +26,25 @@ export function DriverList() {
       )
   }, [])
 
+  const driverOverTaking = (id) => {
+    fetch(`api/drivers/${id}/overtake`, {
+      method: 'POST',
+      body: drivers.find((d) => d.id === id),
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setLoading(false)
+          result.sort((f, s) => (f.place > s.place ? 1 : -1))
+          setDrivers(result)
+        },
+        (error) => {
+          setLoading(false)
+          setError(error)
+        }
+      )
+  }
+
   if (error) {
     return <section>Sorry we encountered some error</section>
   } else if (isLoading) {
@@ -37,7 +56,12 @@ export function DriverList() {
 
         <div className={styles.driverCardContainer}>
           {drivers.map((driver) => (
-            <DriverCard key={driver.id} driver={driver} />
+            <DriverCard
+              key={driver.id}
+              driver={driver}
+              handleItemClick={driverOverTaking}
+              isLoading={isLoading}
+            />
           ))}
         </div>
 

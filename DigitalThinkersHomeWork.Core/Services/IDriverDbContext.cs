@@ -4,7 +4,7 @@ namespace DigitalThinkersHomeWork.Infrastructure
 {
     public interface IDriverDbContext
     {
-        public ICollection<DriverModel> GetAllDrivers();
-        public void UpdateAllDrivers(ICollection<DriverModel> drivers);
+        public List<DriverModel> GetAllDrivers();
+        public void UpdateAllDrivers(List<DriverModel> drivers);
     }
 }

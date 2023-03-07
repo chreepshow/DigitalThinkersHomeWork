@@ -22,5 +22,12 @@ namespace DigitalThinkersHomeWork.API.Controllers
             Logger.LogInformation("Get all drivers endpoint called.");
             return await DriverService.GetAllDrivers();
         }
+
+        [HttpPost("{id}/overtake")]
+        public async Task<IEnumerable<DriverModel>> DriverOvertakeByOne(int id)
+        {
+            Logger.LogInformation("DriverOvertakeByOne endpoint called.");
+            return await DriverService.OvertakeByOne(id);
+        }
     }
 }

@@ -10,9 +10,9 @@ namespace DigitalThinkersHomeWork.Infrastructure
 {
     public class DriverDbContext : IDriverDbContext
     {
-        private ICollection<int> places = new List<int>();
+        private List<int> places = new List<int>();
         private ILogger<DriverDbContext> Logger { get; }
-        private ICollection<DriverModel> Drivers { get; set; } = new List<DriverModel>();
+        private List<DriverModel> Drivers { get; set; } = new List<DriverModel>();
 
         public DriverDbContext(ILogger<DriverDbContext> logger)
         {
@@ -23,13 +23,23 @@ namespace DigitalThinkersHomeWork.Infrastructure
             Logger.LogInformation("Initialise and seed finished");
         }
 
-        public ICollection<DriverModel> GetAllDrivers()
+        public List<DriverModel> GetAllDrivers()
         {
             Logger.LogInformation("Read all drivers from database");
-            return Drivers;
+            return Drivers.ConvertAll(driver => new DriverModel
+            {
+               Code= driver.Code,
+               Country= driver.Country,
+               FirstName= driver.FirstName,
+               Id= driver.Id,
+               ImageUrl= driver.ImageUrl,
+               LastName= driver.LastName,
+               Place= driver.Place,
+               Team= driver.Team,
+            });
         }
 
-        public void UpdateAllDrivers(ICollection<DriverModel> drivers)
+        public void UpdateAllDrivers(List<DriverModel> drivers)
         {
             Logger.LogInformation("Update all drivers in database");
             Drivers.Clear();

@@ -2,6 +2,7 @@
 {
     public interface IDriverService
     {
-        public Task<ICollection<DriverModel>> GetAllDrivers();
+        public Task<List<DriverModel>> GetAllDrivers();
+        public Task<List<DriverModel>> OvertakeByOne(int id);
     }
 }

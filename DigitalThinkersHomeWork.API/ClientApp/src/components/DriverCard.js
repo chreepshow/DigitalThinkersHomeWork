@@ -14,6 +14,14 @@ export function DriverCard(props) {
         <h4>{props.driver.team}</h4>
         <p>{props.driver.place}.</p>
         <p>{props.driver.code}</p>
+        {props.driver.place > 1 && (
+          <button
+            onClick={() => props.handleItemClick(props.driver.id)}
+            disabled={props.isLoading}
+          >
+            Overtake
+          </button>
+        )}
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDriverDbContextConfig(builder.Configuration);
 builder.Services.AddDriverConfig(builder.Configuration);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
